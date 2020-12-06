@@ -151,10 +151,10 @@ func (d DATA) parseline(line string) {
 
 func (d DATA) prettyprint() {
 	fmt.Printf("Output for file = %s\n\n", d.filename)
-	fmt.Printf("Format: Process name | Sent[KB] | Received[KB] | User\n")
+	fmt.Printf("%-100.100s\t%-10.12s\t%-10.12s\t%-10.10s\n", "PROCESS NAME", "SENT", "RECEIVED", "USER")
 	data := d.val
 	for proc, _ := range data {
-		fmt.Printf("%40s\t%10.2f\t%10.2f\t%40s\n", proc, data[proc].sent, data[proc].recv,
+		fmt.Printf("%-100.100s\t%-10.1f MB\t%-10.1f MB\t%-10.10s\n", proc, (data[proc].sent / 1000), (data[proc].recv / 1000),
 			strings.Join(data[proc].users.get(), ","))
 	}
 	fmt.Printf("\n\n")
