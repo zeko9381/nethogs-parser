@@ -151,6 +151,7 @@ func (d DATA) parseline(line string) {
 
 func (d DATA) prettyprint() {
 	fmt.Printf("Output for file = %s\n\n", d.filename)
+	fmt.Printf("Format: Process name | Sent[KB] | Received[KB] | User\n")
 	data := d.val
 	for proc, _ := range data {
 		fmt.Printf("%40s\t%10.2f\t%10.2f\t%40s\n", proc, data[proc].sent, data[proc].recv,
